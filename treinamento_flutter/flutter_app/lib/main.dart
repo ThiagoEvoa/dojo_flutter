@@ -28,6 +28,12 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
+  @override
+  void dispose() {
+    HomeController.of(context).dispose();
+    super.dispose();
+  }
+
   void _incrementCounter(BuildContext context) {
     HomeController.of(context).input.add(++_counter);
   }

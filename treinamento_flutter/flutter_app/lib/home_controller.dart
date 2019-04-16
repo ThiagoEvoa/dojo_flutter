@@ -15,6 +15,10 @@ class HomeController extends InheritedWidget {
         as HomeController;
   }
 
+  dispose(){
+    _streamController.close();
+  }
+
   @override
   bool updateShouldNotify(InheritedWidget oldWidget) {
     return oldWidget != this;
