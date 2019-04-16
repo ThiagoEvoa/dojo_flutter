@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/detail.dart';
-import 'package:flutter_app/item.dart';
+import 'package:flutter_app/second_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -35,44 +34,46 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: FutureBuilder(
-        future: Item.retrieveData(),
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            return ListView.builder(
-              itemCount: snapshot.data.length,
-              itemBuilder: (context, index) {
-                return Column(
-                  children: <Widget>[
-                    ListTile(
-                      onTap: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) => DetailPage(
-                                  item: Item.fromJson(snapshot.data[index]),
-                                ),
-                          ),
-                        );
-                      },
-                      title: Text(
-                          "${snapshot.data[index]["municipio"]["uf"]["nome"]}"),
-                    ),
-                    Divider(
-                      height: 2,
-                    ),
-                  ],
-                );
-              },
-            );
-          } else if (snapshot.hasError) {
-            return Center(
-              child: Text("${snapshot.error}"),
-            );
-          }
-          return Center(
-            child: CircularProgressIndicator(),
-          );
-        },
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Padding(
+              padding: EdgeInsets.all(20),
+              child: RaisedButton(
+                onPressed: () {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => SecondPage()));
+                },
+                child: Text("Push"),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20),
+              child: TextField(
+                decoration: InputDecoration(
+                  hintText: "Push com dado"
+                ),
+                onSubmitted: (text) {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => SecondPage(
+                            data: text,
+                          )));
+                },
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.all(20),
+              child: RaisedButton(
+                onPressed: () {
+                  Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(builder: (context) => SecondPage()));
+                },
+                child: Text("Push Replacement"),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
