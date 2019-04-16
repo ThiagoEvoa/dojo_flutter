@@ -22,8 +22,9 @@ class Home extends StatelessWidget {
       child: Center(
         child: Padding(
           padding: EdgeInsets.all(8),
-          child: Text(
-            "Meu Text"
+          child: RaisedButton(
+            onPressed: () {},
+            child: Text("Meu Botão"),
           ),
         ),
       ),
