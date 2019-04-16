@@ -16,6 +16,8 @@ class MyApp extends StatelessWidget {
 }
 
 class Home extends StatelessWidget {
+  final items = List<String>.generate(20, (items)=> "Minha ListView.builder $items");
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,69 +25,13 @@ class Home extends StatelessWidget {
         title: Text("Minha AppBar"),
       ),
       body: Container(
-        child: ListView(
-          children: <Widget>[
-            ListTile(
-              leading: Icon(Icons.person),
-              title: Text("Minha Lista"),
-              subtitle: Text("Exemplo de lista simples"),
-              trailing: Icon(Icons.delete),
-            ),
-            ListTile(
-              leading: Icon(Icons.person),
-              title: Text("Minha Lista"),
-              subtitle: Text("Exemplo de lista simples"),
-              trailing: Icon(Icons.delete),
-            ),
-            ListTile(
-              leading: Icon(Icons.person),
-              title: Text("Minha Lista"),
-              subtitle: Text("Exemplo de lista simples"),
-              trailing: Icon(Icons.delete),
-            ),
-            ListTile(
-              leading: Icon(Icons.person),
-              title: Text("Minha Lista"),
-              subtitle: Text("Exemplo de lista simples"),
-              trailing: Icon(Icons.delete),
-            ),
-            ListTile(
-              leading: Icon(Icons.person),
-              title: Text("Minha Lista"),
-              subtitle: Text("Exemplo de lista simples"),
-              trailing: Icon(Icons.delete),
-            ),
-            ListTile(
-              leading: Icon(Icons.person),
-              title: Text("Minha Lista"),
-              subtitle: Text("Exemplo de lista simples"),
-              trailing: Icon(Icons.delete),
-            ),
-            ListTile(
-              leading: Icon(Icons.person),
-              title: Text("Minha Lista"),
-              subtitle: Text("Exemplo de lista simples"),
-              trailing: Icon(Icons.delete),
-            ),
-            ListTile(
-              leading: Icon(Icons.person),
-              title: Text("Minha Lista"),
-              subtitle: Text("Exemplo de lista simples"),
-              trailing: Icon(Icons.delete),
-            ),
-            ListTile(
-              leading: Icon(Icons.person),
-              title: Text("Minha Lista"),
-              subtitle: Text("Exemplo de lista simples"),
-              trailing: Icon(Icons.delete),
-            ),
-            ListTile(
-              leading: Icon(Icons.person),
-              title: Text("Minha Lista"),
-              subtitle: Text("Exemplo de lista simples"),
-              trailing: Icon(Icons.delete),
-            ),
-          ],
+        child: ListView.builder(
+          itemCount: items.length,
+          itemBuilder: (context, index) {
+            return ListTile(
+              title: Text(items[index]),
+            );
+          },
         ),
       ),
     );
