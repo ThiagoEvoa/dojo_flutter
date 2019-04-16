@@ -22,6 +22,72 @@ class Home extends StatelessWidget {
       appBar: AppBar(
         title: Text("Minha AppBar"),
       ),
+      body: Container(
+        child: ListView(
+          children: <Widget>[
+            ListTile(
+              leading: Icon(Icons.person),
+              title: Text("Minha Lista"),
+              subtitle: Text("Exemplo de lista simples"),
+              trailing: Icon(Icons.delete),
+            ),
+            ListTile(
+              leading: Icon(Icons.person),
+              title: Text("Minha Lista"),
+              subtitle: Text("Exemplo de lista simples"),
+              trailing: Icon(Icons.delete),
+            ),
+            ListTile(
+              leading: Icon(Icons.person),
+              title: Text("Minha Lista"),
+              subtitle: Text("Exemplo de lista simples"),
+              trailing: Icon(Icons.delete),
+            ),
+            ListTile(
+              leading: Icon(Icons.person),
+              title: Text("Minha Lista"),
+              subtitle: Text("Exemplo de lista simples"),
+              trailing: Icon(Icons.delete),
+            ),
+            ListTile(
+              leading: Icon(Icons.person),
+              title: Text("Minha Lista"),
+              subtitle: Text("Exemplo de lista simples"),
+              trailing: Icon(Icons.delete),
+            ),
+            ListTile(
+              leading: Icon(Icons.person),
+              title: Text("Minha Lista"),
+              subtitle: Text("Exemplo de lista simples"),
+              trailing: Icon(Icons.delete),
+            ),
+            ListTile(
+              leading: Icon(Icons.person),
+              title: Text("Minha Lista"),
+              subtitle: Text("Exemplo de lista simples"),
+              trailing: Icon(Icons.delete),
+            ),
+            ListTile(
+              leading: Icon(Icons.person),
+              title: Text("Minha Lista"),
+              subtitle: Text("Exemplo de lista simples"),
+              trailing: Icon(Icons.delete),
+            ),
+            ListTile(
+              leading: Icon(Icons.person),
+              title: Text("Minha Lista"),
+              subtitle: Text("Exemplo de lista simples"),
+              trailing: Icon(Icons.delete),
+            ),
+            ListTile(
+              leading: Icon(Icons.person),
+              title: Text("Minha Lista"),
+              subtitle: Text("Exemplo de lista simples"),
+              trailing: Icon(Icons.delete),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
