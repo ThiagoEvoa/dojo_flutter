@@ -22,15 +22,8 @@ class Home extends StatelessWidget {
       child: Center(
         child: Padding(
           padding: EdgeInsets.all(8),
-          child: TextField(
-            decoration: InputDecoration(
-              labelText: "TextField",
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.all(
-                  Radius.circular(4),
-                ),
-              ),
-            ),
+          child: Text(
+            "Meu Text"
           ),
         ),
       ),
