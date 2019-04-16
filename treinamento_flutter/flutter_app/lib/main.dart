@@ -16,16 +16,36 @@ class MyApp extends StatelessWidget {
 }
 
 class Home extends StatelessWidget {
+  final _globalKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _globalKey,
       appBar: AppBar(
         title: Text("Minha AppBar"),
       ),
-      body: Container(),
+      body: Center(
+        child: Builder(
+            builder: (context) => RaisedButton(
+                  onPressed: () {
+                    Scaffold.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text("Minha Snackbar"),
+                      ),
+                    );
+                  },
+                  child: Text("Meu Botão"),
+                )),
+      ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          _globalKey.currentState.showSnackBar(
+            SnackBar(
+              content: Text("Minha Snackbar"),
+            ),
+          );
+        },
         child: Icon(Icons.add),
       ),
     );
