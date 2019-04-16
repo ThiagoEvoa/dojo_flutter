@@ -16,23 +16,17 @@ class MyApp extends StatelessWidget {
 }
 
 class Home extends StatelessWidget {
-  final items = List<String>.generate(20, (items)=> "Minha ListView.builder $items");
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("Minha AppBar"),
       ),
-      body: Container(
-        child: ListView.builder(
-          itemCount: items.length,
-          itemBuilder: (context, index) {
-            return ListTile(
-              title: Text(items[index]),
-            );
-          },
-        ),
+      body: Container(),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Icon(Icons.add),
       ),
     );
   }
