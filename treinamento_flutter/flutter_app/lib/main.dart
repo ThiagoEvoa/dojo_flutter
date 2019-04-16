@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/home_controller.dart';
+import 'package:flutter_app/detail.dart';
+import 'package:flutter_app/item.dart';
 
 void main() => runApp(MyApp());
 
@@ -11,7 +12,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: HomeController(child: MyHomePage(title: 'Flutter Demo Home Page')),
+      home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
@@ -26,52 +27,53 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  @override
-  void dispose() {
-    HomeController.of(context).dispose();
-    super.dispose();
-  }
-
-  void _incrementCounter(BuildContext context) {
-    HomeController.of(context).input.add(++_counter);
-  }
-
   @override
   Widget build(BuildContext context) {
     print("Build Again!");
 
-    return StreamBuilder(
-      stream: HomeController.of(context).output,
-      builder: (context, snapshot) {
-        return Scaffold(
-          appBar: AppBar(
-            title: Text(widget.title),
-          ),
-          body: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text(
-                  'You have pushed the button this many times:',
-                ),
-                Text(
-                  '${snapshot.data}',
-                  style: Theme.of(context).textTheme.display1,
-                ),
-              ],
-            ),
-          ),
-          floatingActionButton: FloatingActionButton(
-            onPressed: () {
-              _incrementCounter(context);
-            },
-            tooltip: 'Increment',
-            child: Icon(Icons.add),
-          ),
-        );
-      },
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
+      ),
+      body: FutureBuilder(
+        future: Item.retrieveData(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            return ListView.builder(
+              itemCount: snapshot.data.length,
+              itemBuilder: (context, index) {
+                return Column(
+                  children: <Widget>[
+                    ListTile(
+                      onTap: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => DetailPage(
+                                  item: Item.fromJson(snapshot.data[index]),
+                                ),
+                          ),
+                        );
+                      },
+                      title: Text(
+                          "${snapshot.data[index]["municipio"]["uf"]["nome"]}"),
+                    ),
+                    Divider(
+                      height: 2,
+                    ),
+                  ],
+                );
+              },
+            );
+          } else if (snapshot.hasError) {
+            return Center(
+              child: Text("${snapshot.error}"),
+            );
+          }
+          return Center(
+            child: CircularProgressIndicator(),
+          );
+        },
+      ),
     );
   }
 }
