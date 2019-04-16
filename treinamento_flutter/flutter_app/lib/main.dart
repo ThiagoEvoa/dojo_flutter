@@ -18,15 +18,9 @@ class MyApp extends StatelessWidget {
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Material(
-      child: Center(
-        child: Padding(
-          padding: EdgeInsets.all(8),
-          child: RaisedButton(
-            onPressed: () {},
-            child: Text("Meu Botão"),
-          ),
-        ),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Minha AppBar"),
       ),
     );
   }
