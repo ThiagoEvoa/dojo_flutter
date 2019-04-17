@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/detail.dart';
-import 'package:flutter_app/item.dart';
+import 'package:flutter_app/Page2.dart';
+import 'package:flutter_app/drawer_controller.dart';
+import 'package:flutter_app/page1.dart';
 
 void main() => runApp(MyApp());
 
@@ -12,7 +13,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: CustomDrawerController(
+        child: MyHomePage(title: 'Flutter Demo Home Page'),
+      ),
     );
   }
 }
@@ -27,50 +30,99 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final pages = [Page1(), Page2()];
+
   @override
   Widget build(BuildContext context) {
-    print("Build Again!");
+    final _controller = CustomDrawerController.of(context);
 
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: FutureBuilder(
-        future: Item.retrieveData(),
+      drawer: StreamBuilder<int>(
+        stream: _controller.output,
         builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            return ListView.builder(
-              itemCount: snapshot.data.length,
-              itemBuilder: (context, index) {
-                return Column(
-                  children: <Widget>[
-                    ListTile(
-                      onTap: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) => DetailPage(
-                                  item: Item.fromJson(snapshot.data[index]),
-                                ),
+          return Drawer(
+            child: ListView(
+              padding: EdgeInsets.zero,
+              children: <Widget>[
+                DrawerHeader(
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).primaryColor,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Expanded(
+                        flex: 2,
+                        child: Container(
+                          height: 80,
+                          width: 80,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Colors.white,
                           ),
-                        );
-                      },
-                      title: Text(
-                          "${snapshot.data[index]["municipio"]["uf"]["nome"]}"),
-                    ),
-                    Divider(
-                      height: 2,
-                    ),
-                  ],
-                );
-              },
-            );
-          } else if (snapshot.hasError) {
-            return Center(
-              child: Text("${snapshot.error}"),
-            );
-          }
-          return Center(
-            child: CircularProgressIndicator(),
+                          child: IconButton(
+                            onPressed: () {},
+                            icon: Icon(
+                              Icons.person,
+                              color: Theme.of(context).primaryColor,
+                              size: 50,
+                            ),
+                          ),
+                        ),
+                      ),
+                      Text(
+                        "Meu Header",
+                        style: TextStyle(color: Colors.white, fontSize: 16),
+                      ),
+                      Text(
+                        "Com Flutter",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ],
+                  ),
+                ),
+                ListTile(
+                  selected: snapshot.data == 0,
+                  onTap: () {
+                    _controller.input.add(0);
+                    Scaffold.of(context).openEndDrawer();
+                  },
+                  leading: Icon(
+                    Icons.home,
+                    color: snapshot.data == 0
+                        ? Theme.of(context).primaryColor
+                        : Colors.black,
+                  ),
+                  title: Text("Page 1"),
+                ),
+                ListTile(
+                  selected: snapshot.data == 1,
+                  onTap: () {
+                    _controller.input.add(1);
+                    Scaffold.of(context).openEndDrawer();
+                  },
+                  leading: Icon(
+                    Icons.account_box,
+                    color:snapshot.data == 1
+                        ? Theme.of(context).primaryColor
+                        : Colors.black,
+                  ),
+                  title: Text("Page 2"),
+                ),
+              ],
+            ),
+          );
+        },
+      ),
+      body: StreamBuilder(
+        stream: _controller.output,
+        builder: (context, snapshot) {
+          return PageView(
+            physics: NeverScrollableScrollPhysics(),
+            children: <Widget>[pages[snapshot.data]],
           );
         },
       ),
