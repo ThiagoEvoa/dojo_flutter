@@ -94,9 +94,15 @@ class _MyHomePageState extends State<MyHomePage> {
                     Icons.home,
                     color: snapshot.data == 0
                         ? Theme.of(context).primaryColor
-                        : Colors.black,
+                        : null,
                   ),
-                  title: Text("Page 1"),
+                  title: Text(
+                    "Page 1",
+                    style: TextStyle(
+                        color: snapshot.data == 0
+                            ? Theme.of(context).primaryColor
+                            : Colors.black54),
+                  ),
                 ),
                 ListTile(
                   selected: snapshot.data == 1,
@@ -106,11 +112,17 @@ class _MyHomePageState extends State<MyHomePage> {
                   },
                   leading: Icon(
                     Icons.account_box,
-                    color:snapshot.data == 1
+                    color: snapshot.data == 1
                         ? Theme.of(context).primaryColor
-                        : Colors.black,
+                        : null,
                   ),
-                  title: Text("Page 2"),
+                  title: Text(
+                    "Page 2",
+                    style: TextStyle(
+                        color: snapshot.data == 1
+                            ? Theme.of(context).primaryColor
+                            : Colors.black54),
+                  ),
                 ),
               ],
             ),
