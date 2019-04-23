@@ -26,11 +26,9 @@ class Item {
         quantidadeBeneficiados: json["quantidadeBeneficiados"]);
   }
 
-  static Future<List<dynamic>> retrieveData() async {
+  static Future<dynamic> retrieveData() async {
     final response = await http.get(
         "http://www.transparencia.gov.br/api-de-dados/bolsa-familia-por-municipio?mesAno=201812&codigoIbge=2611606&pagina=1");
-
-    print(response);
 
     if (response.statusCode == 200) {
       return json.decode(response.body);
