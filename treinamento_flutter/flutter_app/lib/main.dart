@@ -20,17 +20,6 @@ class MyApp extends StatelessWidget {
 }
 
 class Home extends StatelessWidget {
-  Widget customButton() {
-    return Platform.isAndroid
-        ? RaisedButton(
-            onPressed: () {},
-            child: Text("Meu Botão"),
-          )
-        : CupertinoButton(
-            onPressed: () {},
-            child: Text("Meu Botão"),
-          );
-  }
 
   @override
   Widget build(BuildContext context) {
