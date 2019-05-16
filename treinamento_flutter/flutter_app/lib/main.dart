@@ -30,10 +30,16 @@ class _MyHomePageState extends State<MyHomePage> {
   final textFieldController = TextEditingController();
 
   @override
-  void initState() async{
-    prefs = await SharedPreferences.getInstance();
+  void initState() {
+    _getSharedPreferences();
     super.initState();
   }
+
+  _getSharedPreferences() async {
+    prefs = await SharedPreferences.getInstance();
+    textFieldController.text = prefs.getString("text");
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,7 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             RaisedButton(
-              onPressed: (){
+              onPressed: () {
                 prefs.setString("text", textFieldController.text);
               },
               child: Text("Save"),
