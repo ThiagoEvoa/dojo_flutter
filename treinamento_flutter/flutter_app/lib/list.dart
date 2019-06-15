@@ -17,7 +17,7 @@ class _ListState extends State<ListPage> {
       body: FutureBuilder(
         future: PersonDAO().get(),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
-          if (snapshot.hasData) {
+          if (snapshot.data.length > 0) {
             return ListView.builder(
               itemCount: snapshot.data.length,
               itemBuilder: (context, index) {
