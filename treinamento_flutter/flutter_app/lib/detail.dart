@@ -35,7 +35,8 @@ class _DetailPageState extends State<DetailPage> {
               }else{
                 widget.person.name = _controller.text;
               }
-              PersonDAO().insert(person: widget.person); 
+              PersonDAO().insert(person: widget.person);
+              Navigator.pop(context); 
             },
             child: Text("Save"),
           )

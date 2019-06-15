@@ -25,7 +25,13 @@ class _ListState extends State<ListPage> {
                   key: Key(snapshot.data[index].id.toString()),
                   direction: DismissDirection.endToStart,
                   onDismissed: (direction) {
-                    PersonDAO().delete(snapshot.data[index].id);
+                    PersonDAO()
+                        .delete(snapshot.data[index].id)
+                        .whenComplete(() {
+                      setState(() {
+                        snapshot.data.removeAt(index);
+                      });
+                    });
                   },
                   background: Container(
                     alignment: Alignment.centerRight,
