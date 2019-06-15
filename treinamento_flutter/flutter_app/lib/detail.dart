@@ -3,7 +3,7 @@ import 'package:flutter_app/person.dart';
 import 'package:flutter_app/personDAO.dart';
 
 class DetailPage extends StatefulWidget {
-  final Person person;
+  Person person;
 
   DetailPage({this.person});
 
