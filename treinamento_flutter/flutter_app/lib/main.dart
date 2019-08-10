@@ -15,9 +15,15 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class Home extends StatelessWidget {
-  final items = List<String>.generate(20, (items)=> "Minha ListView.builder $items");
-  
+class Home extends StatefulWidget {
+  @override
+  _HomeState createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  final items =
+      List<String>.generate(20, (items) => "Minha ListView.builder $items");
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,13 +31,24 @@ class Home extends StatelessWidget {
         title: Text("Minha AppBar"),
       ),
       body: Container(
-        child: ListView.builder(
-          itemCount: items.length,
-          itemBuilder: (context, index) {
-            return ListTile(
-              title: Text(items[index]),
-            );
+        child: ReorderableListView(
+          onReorder: (int oldIndex, int newIndex) {
+            setState(() {
+              if(newIndex > oldIndex){
+                newIndex -= 1;
+              }
+              var item = items.removeAt(oldIndex);
+              items.insert(newIndex, item);
+            });
           },
+          header: Text('Header'),
+          children: <Widget>[
+            for (final item in items)
+              ListTile(
+                key: ValueKey(item),
+                title: Text(item),
+              ),
+          ],
         ),
       ),
     );
