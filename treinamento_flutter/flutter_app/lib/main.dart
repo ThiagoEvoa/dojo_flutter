@@ -40,8 +40,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    print("Build Again!");
-
     return StreamBuilder(
       stream: HomeController.of(context).output,
       builder: (context, snapshot) {
