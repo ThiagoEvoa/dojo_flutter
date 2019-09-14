@@ -25,13 +25,13 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  List<bool> _isMultiSelected = [false, false];
-  List<bool> _isSelected = [false, false];
-  List<bool> _isMultiRequiredSelected = [true, true];
+  final _formKey = GlobalKey<FormState>();
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       appBar: AppBar(
         title: Text(widget.title),
       ),
@@ -39,64 +39,34 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text("Multi Select"),
-            ToggleButtons(
-              onPressed: (index) {
-                setState(() {
-                  _isMultiSelected[index] = !_isMultiSelected[index];
-                });
-              },
-              isSelected: _isMultiSelected,
-              children: <Widget>[
-                Icon(Icons.camera),
-                Icon(Icons.image),
-              ],
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 40),
-              child: Text("Select"),
-            ),
-            ToggleButtons(
-              onPressed: (index) {
-                setState(() {
-                  for (var i = 0; i < _isSelected.length; i++) {
-                    if (i == index) {
-                      _isSelected[i] = true;
-                    } else {
-                      _isSelected[i] = false;
+            Form(
+              key: _formKey,
+              child: Padding(
+                padding: const EdgeInsets.all(20),
+                child: TextFormField(
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return 'Preencha o campo';
                     }
-                  }
-                });
-              },
-              isSelected: _isSelected,
-              children: <Widget>[
-                Icon(Icons.camera),
-                Icon(Icons.image),
-              ],
+                    return null;
+                  },
+                  decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: "Digite alguma coisa"),
+                ),
+              ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 40),
-              child: Text("MultiRequiredSelect"),
-            ),
-            ToggleButtons(
-              onPressed: (index) {
-                int count = 0;
-                _isMultiRequiredSelected.forEach((bool val) {
-                  if (val) count++;
-                });
-
-                if (_isMultiRequiredSelected[index] && count < 2) return;
-
-                setState(() {
-                  _isMultiRequiredSelected[index] =
-                      !_isMultiRequiredSelected[index];
-                });
+            RaisedButton(
+              onPressed: () {
+                if (_formKey.currentState.validate()) {
+                  _scaffoldKey.currentState.showSnackBar(
+                    SnackBar(
+                      content: Text("Campo preenchido"),
+                    ),
+                  );
+                }
               },
-              isSelected: _isMultiRequiredSelected,
-              children: <Widget>[
-                Icon(Icons.camera),
-                Icon(Icons.image),
-              ],
+              child: Text("Validar formulário"),
             ),
           ],
         ),
