@@ -25,13 +25,9 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+  List<bool> _isMultiSelected = [false, false];
+  List<bool> _isSelected = [false, false];
+  List<bool> _isMultiRequiredSelected = [true, true];
 
   @override
   Widget build(BuildContext context) {
@@ -43,20 +39,67 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
+            Text("Multi Select"),
+            ToggleButtons(
+              onPressed: (index) {
+                setState(() {
+                  _isMultiSelected[index] = !_isMultiSelected[index];
+                });
+              },
+              isSelected: _isMultiSelected,
+              children: <Widget>[
+                Icon(Icons.camera),
+                Icon(Icons.image),
+              ],
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.display1,
+            Padding(
+              padding: const EdgeInsets.only(top: 40),
+              child: Text("Select"),
+            ),
+            ToggleButtons(
+              onPressed: (index) {
+                setState(() {
+                  for (var i = 0; i < _isSelected.length; i++) {
+                    if (i == index) {
+                      _isSelected[i] = true;
+                    } else {
+                      _isSelected[i] = false;
+                    }
+                  }
+                });
+              },
+              isSelected: _isSelected,
+              children: <Widget>[
+                Icon(Icons.camera),
+                Icon(Icons.image),
+              ],
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 40),
+              child: Text("MultiRequiredSelect"),
+            ),
+            ToggleButtons(
+              onPressed: (index) {
+                int count = 0;
+                _isMultiRequiredSelected.forEach((bool val) {
+                  if (val) count++;
+                });
+
+                if (_isMultiRequiredSelected[index] && count < 2) return;
+
+                setState(() {
+                  _isMultiRequiredSelected[index] =
+                      !_isMultiRequiredSelected[index];
+                });
+              },
+              isSelected: _isMultiRequiredSelected,
+              children: <Widget>[
+                Icon(Icons.camera),
+                Icon(Icons.image),
+              ],
             ),
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
       ),
     );
   }
