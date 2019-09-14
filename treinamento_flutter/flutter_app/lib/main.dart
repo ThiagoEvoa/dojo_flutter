@@ -25,16 +25,59 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
+    Future<void> _dialog() async {
+      return showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (context) {
+          return AlertDialog(
+            title: Text("Dialog"),
+            content: Text("Exemplo de Dialog simples"),
+            actions: <Widget>[
+              FlatButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: Text("ok"),
+              )
+            ],
+          );
+        },
+      );
+    }
+
+    Future<void> _generalDialog() async {
+      return showGeneralDialog(
+        context: context,
+        barrierDismissible: false,
+        transitionDuration: Duration(seconds: 3),
+        transitionBuilder: (context, animation, secondaryAnimation, child) {
+          var fadeTween = CurveTween(curve: Curves.fastOutSlowIn);
+          var fadeAnimation = fadeTween.animate(animation);
+          return FadeTransition(
+            opacity: fadeAnimation,
+            child: child,
+          );
+        },
+        pageBuilder: (context, animation, secondaryAnimation) {
+          return AlertDialog(
+            title: Text("Dialog"),
+            content: Text("Exemplo de GeneralDialog"),
+            actions: <Widget>[
+              FlatButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: Text("ok"),
+              ),
+            ],
+          );
+        },
+      );
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
@@ -43,20 +86,19 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
+            Padding(
+              padding: const EdgeInsets.all(20),
+              child: RaisedButton(
+                onPressed: _dialog,
+                child: Text("Dialog"),
+              ),
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.display1,
+            RaisedButton(
+              onPressed: _generalDialog,
+              child: Text("General Dialog"),
             ),
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
       ),
     );
   }
