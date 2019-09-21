@@ -25,12 +25,14 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  double _heightBlue = 0;
+  double _heightYellow = 0;
+  double _heightRed = 0;
 
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
   }
 
   @override
@@ -40,23 +42,62 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
+        child: Padding(
+          padding: const EdgeInsets.all(20),
+          child: Container(
+            width: 400,
+            height: 400,
+            decoration: BoxDecoration(
+              border: Border(
+                  left: BorderSide(width: 3, color: Colors.black),
+                  bottom: BorderSide(width: 3, color: Colors.black)),
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.display1,
+            alignment: Alignment.bottomCenter,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 5),
+                  child: AnimatedContainer(
+                    duration: Duration(seconds: 3),
+                    width: 60,
+                    height: _heightBlue,
+                    color: Colors.blue,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 5),
+                  child: AnimatedContainer(
+                    duration: Duration(seconds: 3),
+                    width: 60,
+                    height: _heightYellow,
+                    color: Colors.yellow,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 5),
+                  child: AnimatedContainer(
+                    duration: Duration(seconds: 3),
+                    width: 60,
+                    height: _heightRed,
+                    color: Colors.red,
+                  ),
+                ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          setState(() {
+            _heightBlue += 100;
+            _heightYellow += 150;
+            _heightRed += 200;
+          });
+        },
+        label: Text("Animar"),
       ),
     );
   }
