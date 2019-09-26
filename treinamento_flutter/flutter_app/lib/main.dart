@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 void main() => runApp(MyApp());
 
@@ -25,13 +26,9 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+  WebViewController _controller;
+  final String _flutter = 'https://flutter.dev/';
+  final String _dart = 'https://dart.dev/';
 
   @override
   Widget build(BuildContext context) {
@@ -40,23 +37,26 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.display1,
-            ),
-          ],
+        child: WebView(
+          initialUrl: _flutter,
+          javascriptMode: JavascriptMode.unrestricted,
+          onWebViewCreated: (webViewController) {
+            _controller = webViewController;
+          },
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
+        onPressed: () async {
+          String currentUrl = await _controller.currentUrl();
+
+          print(currentUrl.compareTo(_flutter));
+          if (currentUrl.compareTo(_flutter) == 0) {
+            _controller.loadUrl(_dart);
+          } else {
+            _controller.loadUrl(_flutter);
+          }
+        },
+        child: Icon(Icons.web_asset),
       ),
     );
   }
