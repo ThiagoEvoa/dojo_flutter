@@ -32,17 +32,14 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: Wrap(
-          direction: Axis.vertical,
-          crossAxisAlignment: WrapCrossAlignment.center,
-          spacing: 10,
-          runSpacing: 20,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              'Wrap example',
+              'Column example',
             ),
             Text(
-              'A alternate between Column and row',
+              'Aligning widgets on top of another',
             ),
           ],
         ),
