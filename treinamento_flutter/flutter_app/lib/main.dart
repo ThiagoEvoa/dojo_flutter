@@ -32,15 +32,22 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
+        child: Stack(
           children: <Widget>[
-            Text(
-              'Row example ',
+            Container(
+              height: 200,
+              width: 200,
+              color: Colors.red,
             ),
-            Text(
-              'Aligning widgets beside another',
+            Container(
+              height: 150,
+              width: 150,
+              color: Colors.green,
+            ),
+            Container(
+              height: 50,
+              width: 50,
+              color: Colors.blue,
             ),
           ],
         ),
