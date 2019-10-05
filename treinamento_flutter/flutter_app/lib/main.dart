@@ -32,15 +32,15 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: Column(
+        child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Text(
-              'Column example',
+              'Row example ',
             ),
             Text(
-              'Aligning widgets on top of another',
+              'Aligning widgets beside another',
             ),
           ],
         ),
