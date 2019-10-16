@@ -25,38 +25,51 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+  var _data = "Tab1";
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.display1,
-            ),
-          ],
+    return DefaultTabController(
+      length: 2,
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text(widget.title),
+          bottom: TabBar(
+            onTap: (position) {
+              setState(() {
+                switch (position) {
+                  case 0:
+                    _data = "Tab1";
+                    break;
+                  case 1:
+                    _data = "Tab2";
+                    break;
+                }
+              });
+            },
+            tabs: <Widget>[
+              Tab(
+                text: "Tab1",
+              ),
+              Tab(
+                text: "Tab2",
+              ),
+            ],
+          ),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
+        body: Center(
+          child: TabBarView(
+            physics: NeverScrollableScrollPhysics(),
+            children: <Widget>[
+              Center(
+                child: Text(_data),
+              ),
+              Center(
+                child: Text(_data),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
