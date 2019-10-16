@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/page1.dart';
+import 'package:flutter_app/page2.dart';
 
 void main() => runApp(MyApp());
 
@@ -25,8 +27,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  var _data = "Tab1";
-
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -35,18 +35,6 @@ class _MyHomePageState extends State<MyHomePage> {
         appBar: AppBar(
           title: Text(widget.title),
           bottom: TabBar(
-            onTap: (position) {
-              setState(() {
-                switch (position) {
-                  case 0:
-                    _data = "Tab1";
-                    break;
-                  case 1:
-                    _data = "Tab2";
-                    break;
-                }
-              });
-            },
             tabs: <Widget>[
               Tab(
                 text: "Tab1",
@@ -59,14 +47,10 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         body: Center(
           child: TabBarView(
-            physics: NeverScrollableScrollPhysics(),
+            // physics: NeverScrollableScrollPhysics(),
             children: <Widget>[
-              Center(
-                child: Text(_data),
-              ),
-              Center(
-                child: Text(_data),
-              ),
+              Page1(),
+              Page2(),
             ],
           ),
         ),
