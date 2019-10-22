@@ -1,5 +1,8 @@
+import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/home_controller.dart';
+import 'package:flutter_app/bloc_delegate.dart';
+import 'package:flutter_app/counter_bloc.dart';
+import 'package:flutter_app/counter_event.dart';
 
 void main() => runApp(MyApp());
 
@@ -11,7 +14,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: HomeController(child: MyHomePage(title: 'Flutter Demo Home Page')),
+      home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
@@ -26,50 +29,48 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  final counterBloc = CounterBloc();
 
   @override
   void dispose() {
-    HomeController.of(context).dispose();
+    counterBloc.close();
     super.dispose();
-  }
-
-  void _incrementCounter(BuildContext context) {
-    HomeController.of(context).input.add(++_counter);
   }
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder(
-      stream: HomeController.of(context).output,
-      builder: (context, snapshot) {
-        return Scaffold(
-          appBar: AppBar(
-            title: Text(widget.title),
-          ),
-          body: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text(
-                  'You have pushed the button this many times:',
-                ),
-                Text(
+    BlocSupervisor.delegate = SimpleBlocDelegate();
+  
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              'You have pushed the button this many times:',
+            ),
+            StreamBuilder(
+              stream: counterBloc,
+              builder: (context, snapshot) {
+                return Text(
                   '${snapshot.data}',
                   style: Theme.of(context).textTheme.display1,
-                ),
-              ],
+                );
+              },
             ),
-          ),
-          floatingActionButton: FloatingActionButton(
-            onPressed: () {
-              _incrementCounter(context);
-            },
-            tooltip: 'Increment',
-            child: Icon(Icons.add),
-          ),
-        );
-      },
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          counterBloc.add(CounterEvent.INCREMENT);
+        },
+        tooltip: 'Increment',
+        child: Icon(Icons.add),
+      ),
     );
   }
 }
