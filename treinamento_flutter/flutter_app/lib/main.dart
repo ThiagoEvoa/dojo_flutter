@@ -25,13 +25,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+  int _currentStep = 0;
+  StepState _stepState = StepState.editing;
 
   @override
   Widget build(BuildContext context) {
@@ -39,24 +34,70 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.display1,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
+      body: Stepper(
+        currentStep: _currentStep,
+        controlsBuilder: (BuildContext context,
+            {VoidCallback onStepContinue, VoidCallback onStepCancel}) {
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.only(bottom: 20),
+                child: Text("Content"),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.only(right: 5),
+                    child: RaisedButton(
+                      color: Theme.of(context).primaryColor,
+                      textColor: Colors.white,
+                      onPressed: onStepContinue,
+                      child: Text("Continue"),
+                    ),
+                  ),
+                  RaisedButton(
+                    onPressed: onStepCancel,
+                    child: Text("Cancel"),
+                  ),
+                ],
+              ),
+            ],
+          );
+        },
+        onStepContinue: () {
+          setState(() {
+            _currentStep++;
+          });
+        },
+        onStepCancel: () {
+          setState(() {
+            _currentStep--;
+          });
+        },
+        onStepTapped: (position) {
+          setState(() {
+            _currentStep = position;
+          });
+        },
+        steps: <Step>[
+          Step(
+            state: _currentStep == 0 ? _stepState : StepState.indexed,
+            content: Text("Title Step 1"),
+            title: Text("Step 1"),
+          ),
+          Step(
+            state: _currentStep == 1 ? _stepState : StepState.indexed,
+            content: Text("Title Step 2"),
+            title: Text("Step 2"),
+          ),
+          Step(
+            state: _currentStep == 2 ? _stepState : StepState.indexed,
+            content: Text("Title Step 3"),
+            title: Text("Step 3"),
+          ),
+        ],
       ),
     );
   }
