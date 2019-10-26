@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/menu_itens.dart';
+import 'package:flutter_app/whyfarther.dart';
 
 void main() => runApp(MyApp());
 
@@ -25,39 +27,33 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
+        actions: <Widget>[
+          PopupMenuButton(
+            icon: Icon(Icons.menu),
+            onSelected: (result) {},
+            itemBuilder: (context) => <PopupMenuEntry<MenuItens>>[
+              const PopupMenuItem<MenuItens>(
+                value: MenuItens.option1,
+                child: Text("First Option"),
+              ),
+              const PopupMenuItem<MenuItens>(
+                value: MenuItens.option2,
+                child: Text("Second Option"),
+              ),
+              const PopupMenuItem<MenuItens>(
+                value: MenuItens.option3,
+                child: Text("Third Option"),
+              ),
+            ],
+          ),
+        ],
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.display1,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ),
+      body: Container(),
     );
   }
 }
