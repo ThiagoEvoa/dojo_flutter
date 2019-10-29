@@ -7,14 +7,16 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: ChangeNotifierProvider<CounterProvider>(
-        builder: (_) => CounterProvider(0),
-        child: MyHomePage(title: 'Flutter Demo Home Page'),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider<CounterProvider>.value(value: CounterProvider(0)),
+      ],
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: MyHomePage(title: 'Flutter Demo Home Page'),
       ),
     );
   }
@@ -32,33 +34,35 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    final counter = Provider.of<CounterProvider>(context);
-
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
+    return Consumer<CounterProvider>(
+      builder: (context, snapshot, widget) {
+        return Scaffold(
+          appBar: AppBar(
+            title: Text(this.widget.title),
+          ),
+          body: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text(
+                  'You have pushed the button this many times:',
+                ),
+                Text(
+                  '${snapshot.getCounter}',
+                  style: Theme.of(context).textTheme.display1,
+                ),
+              ],
             ),
-            Text(
-              '${counter.getCounter}',
-              style: Theme.of(context).textTheme.display1,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          counter.incrementCounter();
-        },
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ),
+          ),
+          floatingActionButton: FloatingActionButton(
+            onPressed: () {
+              snapshot.incrementCounter();
+            },
+            tooltip: 'Increment',
+            child: Icon(Icons.add),
+          ),
+        );
+      },
     );
   }
 }
