@@ -25,13 +25,13 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  double value = 0;
+  bool value = false;
 
   @override
   Widget build(BuildContext context) {
     return Material(
       child: Center(
-        child: Slider(
+        child: Switch(
           value: value,
           onChanged: (value) {
             setState(() {
