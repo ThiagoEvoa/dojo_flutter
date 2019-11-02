@@ -25,20 +25,42 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  bool value = false;
+  String _value = '';
 
   @override
   Widget build(BuildContext context) {
+    Future _selectDate() async {
+      DateTime dateTime = await showDatePicker(
+          context: context,
+          initialDate: DateTime.now(),
+          firstDate: DateTime(DateTime.now().year),
+          lastDate: DateTime(DateTime.now().year + 100),
+          builder: (context, child) {
+            return Theme(
+              data: ThemeData.light(),
+              child: child,
+            );
+          });
+
+      if (dateTime != null) {
+        setState(() {
+          _value = dateTime.toString();
+        });
+      }
+    }
+
     return Material(
-      child: Center(
-        child: Switch(
-          value: value,
-          onChanged: (value) {
-            setState(() {
-              this.value = value;
-            });
-          },
-        ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          IconButton(
+            onPressed: () {
+              _selectDate();
+            },
+            icon: Icon(Icons.calendar_today),
+          ),
+          Text(_value),
+        ],
       ),
     );
   }
