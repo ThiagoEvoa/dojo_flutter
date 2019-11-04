@@ -20,9 +20,13 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       child: Center(
-        child: Padding(
-          padding: EdgeInsets.all(8),
-          child: Text("Meu Text"),
+        child: Text(
+          "Text",
+          style: TextStyle(
+            color: Colors.blue,
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
     );
