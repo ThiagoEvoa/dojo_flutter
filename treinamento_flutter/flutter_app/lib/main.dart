@@ -26,16 +26,14 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  String text = "Meu texto copiado";
+  String text = "My copied text";
   final _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
+      appBar: AppBar(),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -45,7 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
               onTap: () {
                 _scaffoldKey.currentState.showSnackBar(
                   SnackBar(
-                    content: Text("Texto copiado."),
+                    content: Text("Texto copied."),
                   ),
                 );
                 Clipboard.setData(
