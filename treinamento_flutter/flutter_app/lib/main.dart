@@ -21,7 +21,7 @@ class Home extends StatelessWidget {
     return Material(
       child: Center(
         child: Padding(
-          padding: EdgeInsets.all(8),
+          padding: const EdgeInsets.all(8.0),
           child: TextField(
             decoration: InputDecoration(
               labelText: "TextField",
