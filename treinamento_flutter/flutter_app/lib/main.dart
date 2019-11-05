@@ -18,25 +18,30 @@ class MyApp extends StatelessWidget {
 }
 
 class Home extends StatelessWidget {
-  Widget customButton(){
-    return Platform.isAndroid
-        ? RaisedButton(
-      onPressed: () {},
-      child: Text("Meu Botão"),
-    )
-        : CupertinoButton(
-      onPressed: () {},
-      child: Text("Meu Botão"),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Material(
       child: Center(
-        child: Padding(
-          padding: EdgeInsets.all(8),
-          child: customButton(),
+        child: Wrap(
+          direction: Axis.vertical,
+          crossAxisAlignment: WrapCrossAlignment.center,
+          spacing: 30,
+          children: <Widget>[
+            RaisedButton(
+              onPressed: () {},
+              color: Colors.blue,
+              textColor: Colors.white,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(50),
+              ),
+              child: Text("Raised Button"),
+            ),
+            FlatButton(
+              onPressed: () {},
+              textColor: Colors.blue,
+              child: Text("Flat Button"),
+            ),
+          ],
         ),
       ),
     );
