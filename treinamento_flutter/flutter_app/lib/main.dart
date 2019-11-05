@@ -30,17 +30,9 @@ class _MyHomePageState extends State<MyHomePage> {
   double _heightRed = 0;
 
   @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
+      appBar: AppBar(),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(20),
@@ -97,7 +89,7 @@ class _MyHomePageState extends State<MyHomePage> {
             _heightRed += 200;
           });
         },
-        label: Text("Animar"),
+        label: Text("Animate"),
       ),
     );
   }
