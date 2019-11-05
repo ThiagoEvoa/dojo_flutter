@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: CustomDrawerController(
-        child: MyHomePage(title: 'Flutter Demo Home Page'),
+        child: MyHomePage(title: ''),
       ),
     );
   }
