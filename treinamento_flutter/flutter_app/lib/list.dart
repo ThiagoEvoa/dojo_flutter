@@ -12,7 +12,7 @@ class _ListState extends State<ListPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Lista"),
+        title: Text("List"),
       ),
       body: FutureBuilder(
         future: PersonDAO().get(),
