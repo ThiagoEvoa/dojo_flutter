@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'First Page'),
     );
   }
 }
@@ -26,10 +26,24 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  _push(BuildContext context, Widget widget) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => widget,
+      ),
+    );
+  }
+
+  _pushReplacement(BuildContext context, Widget widget) {
+    Navigator.of(context).pushReplacement(
+      MaterialPageRoute(
+        builder: (context) => widget,
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    print("Build Again!");
-
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
@@ -39,35 +53,33 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Padding(
+              padding: const EdgeInsets.all(20),
+              child: TextField(
+                decoration: InputDecoration(hintText: "Push with data"),
+                onSubmitted: (text) {
+                  _push(
+                    context,
+                    SecondPage(
+                      data: text,
+                    ),
+                  );
+                },
+              ),
+            ),
+            Padding(
               padding: EdgeInsets.all(20),
               child: RaisedButton(
                 onPressed: () {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => SecondPage()));
+                  _push(context, SecondPage());
                 },
                 child: Text("Push"),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(20),
-              child: TextField(
-                decoration: InputDecoration(
-                  hintText: "Push com dado"
-                ),
-                onSubmitted: (text) {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => SecondPage(
-                            data: text,
-                          )));
-                },
-              ),
-            ),
-            Padding(
               padding: EdgeInsets.all(20),
               child: RaisedButton(
                 onPressed: () {
-                  Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(builder: (context) => SecondPage()));
+                  _pushReplacement(context, SecondPage());
                 },
                 child: Text("Push Replacement"),
               ),
