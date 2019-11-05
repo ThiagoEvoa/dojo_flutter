@@ -30,12 +30,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: _scaffoldKey,
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
+    return Material(
+      child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
@@ -46,13 +42,13 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: TextFormField(
                   validator: (value) {
                     if (value.isEmpty) {
-                      return 'Preencha o campo';
+                      return 'Required field';
                     }
                     return null;
                   },
                   decoration: InputDecoration(
                       border: OutlineInputBorder(),
-                      labelText: "Digite alguma coisa"),
+                      labelText: "Type something"),
                 ),
               ),
             ),
@@ -61,12 +57,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 if (_formKey.currentState.validate()) {
                   _scaffoldKey.currentState.showSnackBar(
                     SnackBar(
-                      content: Text("Campo preenchido"),
+                      content: Text("Valid form"),
                     ),
                   );
                 }
               },
-              child: Text("Validar formulário"),
+              child: Text("Validate form"),
             ),
           ],
         ),
