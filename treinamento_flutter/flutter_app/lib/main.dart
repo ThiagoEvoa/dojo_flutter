@@ -22,26 +22,29 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   final items =
-      List<String>.generate(20, (items) => "Minha ListView.builder $items");
+      List<String>.generate(20, (items) => "My Reorderable ListView  $items");
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Minha AppBar"),
-      ),
+      appBar: AppBar(),
       body: Container(
         child: ReorderableListView(
           onReorder: (int oldIndex, int newIndex) {
-            setState(() {
-              if(newIndex > oldIndex){
-                newIndex -= 1;
-              }
-              var item = items.removeAt(oldIndex);
-              items.insert(newIndex, item);
-            });
+            setState(
+              () {
+                if (newIndex > oldIndex) {
+                  newIndex -= 1;
+                }
+                var item = items.removeAt(oldIndex);
+                items.insert(newIndex, item);
+              },
+            );
           },
-          header: Text('Header'),
+          header: Text(
+            'Header',
+            style: TextStyle(color: Colors.blue, fontSize: 30),
+          ),
           children: <Widget>[
             for (final item in items)
               ListTile(
