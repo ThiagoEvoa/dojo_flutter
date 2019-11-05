@@ -33,8 +33,8 @@ class _MyHomePageState extends State<MyHomePage> {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
-          title: Text(widget.title),
           bottom: TabBar(
+            indicatorColor: Colors.white,
             tabs: <Widget>[
               Tab(
                 text: "Tab1",
