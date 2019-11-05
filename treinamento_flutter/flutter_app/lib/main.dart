@@ -34,7 +34,7 @@ class _MyHomePageState extends State<MyHomePage> {
         builder: (context) {
           return AlertDialog(
             title: Text("Dialog"),
-            content: Text("Exemplo de Dialog simples"),
+            content: Text("Simple dialog example"),
             actions: <Widget>[
               FlatButton(
                 onPressed: () {
@@ -64,7 +64,7 @@ class _MyHomePageState extends State<MyHomePage> {
         pageBuilder: (context, animation, secondaryAnimation) {
           return AlertDialog(
             title: Text("Dialog"),
-            content: Text("Exemplo de GeneralDialog"),
+            content: Text("GeneralDialog example"),
             actions: <Widget>[
               FlatButton(
                 onPressed: () {
@@ -79,9 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
     }
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
+      appBar: AppBar(),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
