@@ -20,7 +20,16 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Minha AppBar"),
+        title: Text("Appbar"),
+        centerTitle: true,
+        backgroundColor: Colors.blue,
+        leading: FlutterLogo( ),
+        actions: <Widget>[
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.menu),
+          )
+        ],
       ),
     );
   }
