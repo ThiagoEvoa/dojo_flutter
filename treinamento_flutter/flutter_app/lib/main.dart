@@ -33,6 +33,8 @@ class _MyHomePageState extends State<MyHomePage> {
       child: Center(
         child: Slider(
           value: value,
+          activeColor: Colors.blue,
+          inactiveColor: Colors.blue[100],
           onChanged: (value) {
             setState(() {
               this.value = value;
