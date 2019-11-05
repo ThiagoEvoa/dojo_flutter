@@ -25,55 +25,28 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            RichText(
-              text: TextSpan(
-                text: 'You ',
-                style: TextStyle(color: Theme.of(context).primaryColor),
-                children: <TextSpan>[
-                  TextSpan(
-                    text: 'have pushed the button ',
-                    style: TextStyle(
-                        fontStyle: FontStyle.italic,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  TextSpan(
-                    text: 'this many times:',
-                    style: TextStyle(
-                        color: Theme.of(context).primaryColorDark,
-                        fontSize: 30),
-                  ),
-                ],
+    return Material(
+      child: Center(
+        child: RichText(
+          text: TextSpan(
+            text: 'Rich ',
+            style: TextStyle(color: Theme.of(context).primaryColor),
+            children: <TextSpan>[
+              TextSpan(
+                text: 'Te',
+                style: TextStyle(
+                    fontStyle: FontStyle.italic, fontWeight: FontWeight.bold),
               ),
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.display1,
-            ),
-          ],
+              TextSpan(
+                text: 'tx',
+                style: TextStyle(
+                    color: Theme.of(context).primaryColorDark, fontSize: 30),
+              ),
+            ],
+          ),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
       ),
     );
   }
