@@ -20,12 +20,11 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Minha AppBar"),
-      ),
+      appBar: AppBar(),
       body: Container(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
+        backgroundColor: Colors.blue,
         child: Icon(Icons.add),
       ),
     );
