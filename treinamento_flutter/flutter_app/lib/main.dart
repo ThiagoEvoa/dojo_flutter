@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/menu_itens.dart';
-import 'package:flutter_app/whyfarther.dart';
 
 void main() => runApp(MyApp());
 
@@ -31,7 +30,6 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
         actions: <Widget>[
           PopupMenuButton(
             icon: Icon(Icons.menu),
@@ -53,7 +51,6 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ],
       ),
-      body: Container(),
     );
   }
 }
