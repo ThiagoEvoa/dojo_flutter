@@ -33,6 +33,8 @@ class _MyHomePageState extends State<MyHomePage> {
       child: Center(
         child: Switch(
           value: value,
+          activeColor: Colors.blue,
+          activeTrackColor: Colors.blue[100],
           onChanged: (value) {
             setState(() {
               this.value = value;
