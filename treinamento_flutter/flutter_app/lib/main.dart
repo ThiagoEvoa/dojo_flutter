@@ -16,14 +16,12 @@ class MyApp extends StatelessWidget {
 }
 
 class Home extends StatelessWidget {
-  final items = List<String>.generate(20, (items)=> "Minha ListView.builder $items");
+  final items = List<String>.generate(20, (items)=> "ListView Builder $items");
   
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Minha AppBar"),
-      ),
+      appBar: AppBar(),
       body: Container(
         child: ListView.builder(
           itemCount: items.length,
