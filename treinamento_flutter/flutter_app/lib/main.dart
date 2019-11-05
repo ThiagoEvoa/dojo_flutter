@@ -52,7 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
               padding: EdgeInsets.only(top: 50),
               child: _image == null
                   ? Text(
-                      "Selecione uma imagem",
+                      "Select an image",
                       textAlign: TextAlign.center,
                       style: TextStyle(fontSize: 30),
                     )
