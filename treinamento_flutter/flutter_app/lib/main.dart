@@ -28,9 +28,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
+      appBar: AppBar(),
       body: Center(
         child: Stack(
           children: <Widget>[
