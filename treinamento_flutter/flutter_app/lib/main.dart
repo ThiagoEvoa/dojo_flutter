@@ -30,9 +30,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
+      appBar: AppBar(),
       body: FutureBuilder(
         future: Item.retrieveData(),
         builder: (context, snapshot) {
