@@ -22,27 +22,25 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _globalKey,
-      appBar: AppBar(
-        title: Text("Minha AppBar"),
-      ),
+      appBar: AppBar(),
       body: Center(
         child: Builder(
             builder: (context) => RaisedButton(
                   onPressed: () {
                     Scaffold.of(context).showSnackBar(
                       SnackBar(
-                        content: Text("Minha Snackbar"),
+                        content: Text("Snackbar"),
                       ),
                     );
                   },
-                  child: Text("Meu Botão"),
+                  child: Text("Button"),
                 )),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           _globalKey.currentState.showSnackBar(
             SnackBar(
-              content: Text("Minha Snackbar"),
+              content: Text("Snackbar with global key"),
             ),
           );
         },
