@@ -37,9 +37,7 @@ class _MyHomePageState extends State<MyHomePage> {
     final _controller = CustomDrawerController.of(context);
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
+      appBar: AppBar(),
       drawer: StreamBuilder<int>(
         stream: _controller.output,
         builder: (context, snapshot) {
