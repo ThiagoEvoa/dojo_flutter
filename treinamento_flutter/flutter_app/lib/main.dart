@@ -1,19 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/theme_provider.dart';
+import 'package:flutter_app/themes.dart';
+import 'package:provider/provider.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(
+      ChangeNotifierProvider<ThemeProvider>(
+        builder: (_) => ThemeProvider(darkTheme),
+        child: MyApp(),
+      ),
+    );
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        brightness: Brightness.light,
-        primarySwatch: Colors.blue,
-      ),
-      darkTheme: ThemeData(
-        brightness: Brightness.dark,
-      ),
+      theme: themeProvider.getTheme(),
       home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
@@ -29,11 +33,31 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+
     return Scaffold(
       appBar: AppBar(),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            RaisedButton(
+              onPressed: () {
+                themeProvider.setTheme(lightTheme);
+              },
+              child: Text("Light Theme"),
+            ),
+            RaisedButton(
+              onPressed: () {
+                themeProvider.setTheme(darkTheme);
+              },
+              child: Text("Dark Theme"),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
