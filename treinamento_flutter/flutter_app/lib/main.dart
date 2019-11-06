@@ -1,3 +1,4 @@
+import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -25,7 +26,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  String _value = '';
+  final _dateTimeController = TextEditingController();
+  final _timeOfDayController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +46,25 @@ class _MyHomePageState extends State<MyHomePage> {
 
       if (dateTime != null) {
         setState(() {
-          _value = dateTime.toString();
+          _dateTimeController.text = formatDate(dateTime, [dd,"/",mm,"/",yyyy]);
+        });
+      }
+    }
+
+    Future _selectTime() async {
+      TimeOfDay timeOfDay = await showTimePicker(
+          context: context,
+          initialTime: TimeOfDay(hour: DateTime.now().hour, minute: DateTime.now().minute),
+          builder: (context, child) {
+            return Theme(
+              data: ThemeData.light(),
+              child: child,
+            );
+          });
+
+      if (timeOfDay != null) {
+        setState(() {
+          _timeOfDayController.text = timeOfDay.format(context);
         });
       }
     }
@@ -53,13 +73,35 @@ class _MyHomePageState extends State<MyHomePage> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          IconButton(
-            onPressed: () {
-              _selectDate();
-            },
-            icon: Icon(Icons.calendar_today),
+          Padding(
+            padding: const EdgeInsets.all(8),
+            child: TextField(
+              controller: _dateTimeController,
+              onTap: () {
+                _selectDate();
+              },
+              decoration: InputDecoration(
+                labelText: "Select Date",
+                suffixIcon: Icon(Icons.calendar_today),
+                border: OutlineInputBorder(),
+              ),
+            ),
           ),
-          Text(_value),
+
+          Padding(
+            padding: const EdgeInsets.all(8),
+            child: TextField(
+              controller: _timeOfDayController,
+              onTap: () {
+                _selectTime();
+              },
+              decoration: InputDecoration(
+                labelText: "Select Time",
+                suffixIcon: Icon(Icons.timer),
+                border: OutlineInputBorder(),
+              ),
+            ),
+          ),
         ],
       ),
     );
