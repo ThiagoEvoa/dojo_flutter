@@ -6,6 +6,8 @@
 	<string>This app is requiring access to your gallery</string>
 	<key>NSCameraUsageDescription</key>
 	<string>This app is requiring access to your gallery</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>This app is requiring access to your microphone</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
