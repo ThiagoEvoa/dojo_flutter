@@ -1,3 +1,4 @@
+import 'dart:collection';
 import 'dart:convert';
 
 import 'package:flutter/widgets.dart';
@@ -8,6 +9,7 @@ import 'package:provider/provider.dart';
 
 class PostService {
   static final _url = 'https://jsonplaceholder.typicode.com/posts';
+  static var _header = HashMap<String, String>();
 
   static fetch(BuildContext context) async {
     final response = await http.get(_url);
@@ -21,23 +23,27 @@ class PostService {
           break;
         }
       default:
-        throw Exception('Failed to retrieve posts');
+        return 'Failed to retrieve posts';
     }
   }
 
   static save(Post post, BuildContext context) async {
+    _header["Content-type"] = "application/json; charset=UTF-8";
+
     final response = post.id != null
-        ? await http.put(_url, body: jsonEncode(post))
+        ? await http.put('$_url/${post.id}',
+            headers: _header, body: jsonEncode(post))
         : await http.post(_url, body: jsonEncode(post));
 
     switch (response.statusCode) {
       case 200:
+      case 201:
         {
           fetch(context);
-          break;
+          return 'Post saved';
         }
       default:
-        throw Exception('Failed to save post');
+        return 'Failed to save post';
     }
   }
 
@@ -48,10 +54,10 @@ class PostService {
       case 200:
         {
           fetch(context);
-          break;
+          return 'Post deleted';
         }
       default:
-        throw Exception('Failed to delete post');
+        return 'Failed to delete post';
     }
   }
 }
