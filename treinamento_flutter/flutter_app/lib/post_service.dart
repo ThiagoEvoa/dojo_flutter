@@ -9,7 +9,11 @@ import 'package:provider/provider.dart';
 
 class PostService {
   static final _url = 'https://jsonplaceholder.typicode.com/posts';
-  static var _header = HashMap<String, String>();
+  static HashMap<String, String> _createHeader() {
+    var _header = HashMap<String, String>();
+    _header["Content-type"] = "application/json; charset=UTF-8";
+    return _header;
+  }
 
   static fetch(BuildContext context) async {
     final response = await http.get(_url);
@@ -28,12 +32,10 @@ class PostService {
   }
 
   static save(Post post, BuildContext context) async {
-    _header["Content-type"] = "application/json; charset=UTF-8";
-
     final response = post.id != null
         ? await http.put('$_url/${post.id}',
-            headers: _header, body: jsonEncode(post))
-        : await http.post(_url, body: jsonEncode(post));
+            headers: _createHeader(), body: jsonEncode(post))
+        : await http.post(_url, headers: _createHeader(), body: jsonEncode(post));
 
     switch (response.statusCode) {
       case 200:
@@ -48,7 +50,7 @@ class PostService {
   }
 
   static delete(Post post, BuildContext context) async {
-    final response = await http.delete('$_url/${post.id}');
+    final response = await http.delete('$_url/${post.id}', headers: _createHeader());
 
     switch (response.statusCode) {
       case 200:

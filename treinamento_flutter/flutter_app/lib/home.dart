@@ -11,6 +11,9 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final _globalKey = GlobalKey<ScaffoldState>();
+  String _message;
+
   _openDetail({Post post}) {
     Navigator.of(context).push(
       MaterialPageRoute(
@@ -20,8 +23,14 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  _delete(Post post) {
-    PostService.delete(post, context);
+  _delete(Post post) async{
+    _message = await PostService.delete(post, context);
+    _globalKey.currentState.showSnackBar(
+      SnackBar(
+        content: Text(_message),
+        duration: Duration(seconds: 5),
+      ),
+    );
   }
 
   @override
@@ -33,6 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _globalKey,
       appBar: AppBar(),
       body: Consumer<PostProvider>(
         builder: (context, snapshot, widget) {

@@ -17,7 +17,7 @@ class _DetailState extends State<Detail> {
   final _formKey = GlobalKey<FormState>();
   final _globalKey = GlobalKey<ScaffoldState>();
   Widget _form;
-  String _message = '';
+  String _message;
 
   _save(Post post) async {
     _message = await PostService.save(post, context);
