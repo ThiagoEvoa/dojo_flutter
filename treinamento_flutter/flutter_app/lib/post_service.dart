@@ -3,9 +3,8 @@ import 'dart:convert';
 
 import 'package:flutter/widgets.dart';
 import 'package:flutter_app/post.dart';
-import 'package:flutter_app/post_provider.dart';
+import 'package:flutter_app/post_bloc.dart';
 import 'package:http/http.dart' as http;
-import 'package:provider/provider.dart';
 
 class PostService {
   static final _url = 'https://jsonplaceholder.typicode.com/posts';
@@ -21,9 +20,9 @@ class PostService {
     switch (response.statusCode) {
       case 200:
         {
-          var provider = Provider.of<PostProvider>(context);
+          var bloc = PostBloc.of(context);
 
-          provider.setPosts(Post.convertPostsToList(response.body));
+          bloc.input.add(Post.convertPostsToList(response.body));
           break;
         }
       default:

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/detail.dart';
 import 'package:flutter_app/post.dart';
-import 'package:flutter_app/post_provider.dart';
+import 'package:flutter_app/post_bloc.dart';
 import 'package:flutter_app/post_service.dart';
-import 'package:provider/provider.dart';
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -23,7 +22,7 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  _delete(Post post) async{
+  _delete(Post post) async {
     _message = await PostService.delete(post, context);
     _globalKey.currentState.showSnackBar(
       SnackBar(
@@ -41,27 +40,30 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final _controller = PostBloc.of(context);
+
     return Scaffold(
       key: _globalKey,
       appBar: AppBar(),
-      body: Consumer<PostProvider>(
-        builder: (context, snapshot, widget) {
-          if (snapshot.getPosts.length != 0) {
+      body: StreamBuilder(
+        stream: _controller.output,
+        builder: (context, snapshot) {
+          if (snapshot.data.length != 0) {
             return ListView.builder(
-              itemCount: snapshot.getPosts.length,
+              itemCount: snapshot.data.length,
               itemBuilder: (context, index) {
                 return Card(
                   elevation: 5,
                   child: ListTile(
                     onTap: () {
-                      _openDetail(post: snapshot.getPosts[index]);
+                      _openDetail(post: snapshot.data[index]);
                     },
-                    leading: Text(snapshot.getPosts[index].id.toString()),
-                    title: Text(snapshot.getPosts[index].title),
-                    subtitle: Text(snapshot.getPosts[index].body),
+                    leading: Text(snapshot.data[index].id.toString()),
+                    title: Text(snapshot.data[index].title),
+                    subtitle: Text(snapshot.data[index].body),
                     trailing: IconButton(
                       onPressed: () {
-                        _delete(snapshot.getPosts[index]);
+                        _delete(snapshot.data[index]);
                       },
                       icon: Icon(Icons.delete),
                     ),
