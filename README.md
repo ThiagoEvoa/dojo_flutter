@@ -1,6 +1,6 @@
 # Text
 
-![text](https://docs.google.com/uc?id=1nvJAqceeoyrHXqaBGKcmV0pbuaYDBX7h)
+<!--![text](https://docs.google.com/uc?id=1nvJAqceeoyrHXqaBGKcmV0pbuaYDBX7h)-->
 
 ```
 Text(
