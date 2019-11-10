@@ -1,7 +1,6 @@
 # Dojo Flutter
 
-Repositório com exemplos básicos, destinado a auxiliar o aprendizado de como implementar as coisas mais utilizadas no dia-a-dia com o Flutter.
-
+Nesse repositório contém exemplos de como implementar várias coisas no Flutter, e caso não tenha algo que você esteja procurando, mande uma mensagem informando o que você gostaria que fosse implementado. 
 
 ## Branches
 
