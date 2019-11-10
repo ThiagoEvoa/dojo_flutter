@@ -1,10 +1,10 @@
 # treinamento_flutter
 
-Neste repositório você vai encontrar várias branch, com implementações de vários assuntos. Então acesse o link e vá procurando pelo assunto que você está precisando. 
+Neste repositório você vai encontrar várias branches, com implementações de vários assuntos. Então acesse o link https://github.com/ThiagoEvoa/treinamento_flutter/branches/all e vá procurando pelo assunto que você está precisando. 
 
 ## Atualizações
 
-- Branch:
+- Text:
 ```
-Descrição
+https://github.com/ThiagoEvoa/treinamento_flutter/tree/text
 ```
