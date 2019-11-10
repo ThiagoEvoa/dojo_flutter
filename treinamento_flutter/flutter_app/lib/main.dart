@@ -43,7 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
               onTap: () {
                 _scaffoldKey.currentState.showSnackBar(
                   SnackBar(
-                    content: Text("Texto copied."),
+                    content: Text("Text copied."),
                   ),
                 );
                 Clipboard.setData(
