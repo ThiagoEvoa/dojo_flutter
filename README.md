@@ -1,7 +1,6 @@
 # Text
-<!--![text](https://docs.google.com/uc?id=1-b0TDXQRkZT-DlZ5lzbjJSVFF1YTeMHV)-->
 
-<img src="https://docs.google.com/uc?id=1-b0TDXQRkZT-DlZ5lzbjJSVFF1YTeMHV">
+<img src="https://docs.google.com/uc?id=1fDWdaHU9UmvL05_2ZbaTygZSM-KGrYHz" height="757" width="350">
 
 ```
 Text(
