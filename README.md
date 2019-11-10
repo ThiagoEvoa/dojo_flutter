@@ -4,6 +4,8 @@
 </p>
 
 ```
+final items = List<String>.generate(20, (items)=> "ListView Builder $items");
+
 ListView.builder(
   itemCount: items.length,
   itemBuilder: (context, index) {
