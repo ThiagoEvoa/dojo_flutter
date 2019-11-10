@@ -6,201 +6,201 @@ Repositório com exemplos básicos, destinado a auxiliar o aprendizado de como i
 
 - [Text](https://github.com/ThiagoEvoa/treinamento_flutter/tree/text):
 ```
-Repositório com exemplo de como criar um texto simples. 
+Exemplo de como criar um texto simples. 
 ```
-- RichText:
+- [RichText](https://github.com/ThiagoEvoa/treinamento_flutter/tree/rich_text):
 ```
-https://github.com/ThiagoEvoa/treinamento_flutter/tree/rich_text
+Exemplo de como criar um texto com diferentes formatações.
 ```
-- SelectableText:
+- [SelectableText](https://github.com/ThiagoEvoa/treinamento_flutter/tree/selectable_text):
 ```
-https://github.com/ThiagoEvoa/treinamento_flutter/tree/selectable_text
+Exemplo de texto selecionável para copiar para o clipboard.
 ```
-- TextField:
+- [TextField](https://github.com/ThiagoEvoa/treinamento_flutter/tree/textfield):
 ```
-https://github.com/ThiagoEvoa/treinamento_flutter/tree/textfield
+Exemplo de como criar um campo onde o usuário possa inserir texto.
 ```
-- Button:
+- [Button](https://github.com/ThiagoEvoa/treinamento_flutter/tree/button):
 ```
-https://github.com/ThiagoEvoa/treinamento_flutter/tree/button
+Exemplo de como criar botões.
 ```
-- ToggleButton:
+- [ToggleButton](https://github.com/ThiagoEvoa/treinamento_flutter/tree/togglebuttons):
 ```
-https://github.com/ThiagoEvoa/treinamento_flutter/tree/togglebuttons
+Exemplo de como criar botões alternados.
 ```
-- ListView:
+- [ListView](https://github.com/ThiagoEvoa/treinamento_flutter/tree/listview):
 ```
-https://github.com/ThiagoEvoa/treinamento_flutter/tree/listview
+Exemplo de como criar uma lista.
 ```
-- ListView Builder:
+- [ListView Builder](https://github.com/ThiagoEvoa/treinamento_flutter/tree/listview_builder):
 ```
-https://github.com/ThiagoEvoa/treinamento_flutter/tree/listview_builder
+Exemplo de como criar uma lista de forma inteligente.
 ```
-- Reorderable ListView:
+- [Reorderable ListView](https://github.com/ThiagoEvoa/treinamento_flutter/tree/reorderable_listview):
 ```
-https://github.com/ThiagoEvoa/treinamento_flutter/tree/reorderable_listview
+Exemplo de como criar uma lista reordenável.
 ```
-- Form:
+- [Form](https://github.com/ThiagoEvoa/treinamento_flutter/tree/form):
 ```
-https://github.com/ThiagoEvoa/treinamento_flutter/tree/form
+Exemplo de como criar um formulário.
 ```
-- Slider:
+- [Slider](https://github.com/ThiagoEvoa/treinamento_flutter/tree/slider):
 ```
-https://github.com/ThiagoEvoa/treinamento_flutter/tree/slider
+Exemplo de como criar um slider.
 ```
-- Switch:
+- [Switch](https://github.com/ThiagoEvoa/treinamento_flutter/tree/switch):
 ```
-https://github.com/ThiagoEvoa/treinamento_flutter/tree/switch
+Exemplo de como criar um switch.
 ```
-- Tooltip:
+- [Tooltip](https://github.com/ThiagoEvoa/treinamento_flutter/tree/tooltip):
 ```
-https://github.com/ThiagoEvoa/treinamento_flutter/tree/tooltip
+Exemplo de como deixar um widget acessível para PCDs.
 ```
-- Column:
+- [Column](https://github.com/ThiagoEvoa/treinamento_flutter/tree/column):
 ```
-https://github.com/ThiagoEvoa/treinamento_flutter/tree/column
+Exemplo de como alinha vários widgets, um abaixo do outro.
 ```
-- Row:
+- [Row](https://github.com/ThiagoEvoa/treinamento_flutter/tree/row):
 ```
-https://github.com/ThiagoEvoa/treinamento_flutter/tree/row
+Exemplo de como alinhar vários widgets, um ao lado do outro.
 ```
-- Wrap:
+- [Wrap](https://github.com/ThiagoEvoa/treinamento_flutter/tree/wrap):
 ```
-https://github.com/ThiagoEvoa/treinamento_flutter/tree/wrap
+Exemplo de como alinhar vários widgets, tanto um abaixo do outro como um ao lado do outro.
 ```
-- Stack:
+- [Stack](https://github.com/ThiagoEvoa/treinamento_flutter/tree/stack):
 ```
-https://github.com/ThiagoEvoa/treinamento_flutter/tree/stack
+Exemplo de como empilhar widgets, um sobre o outro.
 ```
-- Appbar:
+- [Appbar](https://github.com/ThiagoEvoa/treinamento_flutter/tree/appbar):
 ```
-https://github.com/ThiagoEvoa/treinamento_flutter/tree/appbar
+Exemplo de como criar uma appbar.
 ```
-- Tabbar:
+- [Tabbar](https://github.com/ThiagoEvoa/treinamento_flutter/tree/tabbar):
 ```
-https://github.com/ThiagoEvoa/treinamento_flutter/tree/tabbar
+Exemplo de como criar uma tabbar.
 ```
-- Bottom Navigation:
+- [Bottom Navigation](https://github.com/ThiagoEvoa/treinamento_flutter/tree/bottom_navigation):
 ```
-https://github.com/ThiagoEvoa/treinamento_flutter/tree/bottom_navigation
+Exemplo de como criar uma bottom navigation.
 ```
-- Drawer:
+- [Drawer](https://github.com/ThiagoEvoa/treinamento_flutter/tree/drawer):
 ```
-https://github.com/ThiagoEvoa/treinamento_flutter/tree/drawer
+Exemplo de como criar um drawer.
 ```
-- Popup Menu Button:
+- [Popup Menu Button](https://github.com/ThiagoEvoa/treinamento_flutter/tree/popup_menu_button):
 ```
-https://github.com/ThiagoEvoa/treinamento_flutter/tree/popup_menu_button
+
 ```
-- FloatingActionButton:
+- [FloatingActionButton](https://github.com/ThiagoEvoa/treinamento_flutter/tree/floatingactionbutton):
 ```
-https://github.com/ThiagoEvoa/treinamento_flutter/tree/floatingactionbutton
+
 ```
-- Snackbar:
+- [Snackbar](https://github.com/ThiagoEvoa/treinamento_flutter/tree/snackbar):
 ```
-https://github.com/ThiagoEvoa/treinamento_flutter/tree/snackbar
+
 ```
-- Stepper:
+- [Stepper](https://github.com/ThiagoEvoa/treinamento_flutter/tree/stepper):
 ```
-https://github.com/ThiagoEvoa/treinamento_flutter/tree/stepper
+
 ```
-- Flare:
+- [Flare](https://github.com/ThiagoEvoa/treinamento_flutter/tree/flare):
 ```
-https://github.com/ThiagoEvoa/treinamento_flutter/tree/flare
+
 ```
-- DataPicker:
+- [DataPicker](https://github.com/ThiagoEvoa/treinamento_flutter/tree/date_picker):
 ```
-https://github.com/ThiagoEvoa/treinamento_flutter/tree/date_picker
+
 ```
-- ImagePicker:
+- [ImagePicker](https://github.com/ThiagoEvoa/treinamento_flutter/tree/image_picker):
 ```
-https://github.com/ThiagoEvoa/treinamento_flutter/tree/image_picker
+
 ```
-- QRCorde e BarCorde:
+- [QRCorde e BarCorde](https://github.com/ThiagoEvoa/treinamento_flutter/tree/qr_barcode):
 ```
-https://github.com/ThiagoEvoa/treinamento_flutter/tree/qr_barcode
+
 ```
-- Navigation:
+- [Navigation](https://github.com/ThiagoEvoa/treinamento_flutter/tree/navigation):
 ```
-https://github.com/ThiagoEvoa/treinamento_flutter/tree/navigation
+
 ```
-- Hero:
+- [Hero](https://github.com/ThiagoEvoa/treinamento_flutter/tree/hero):
 ```
-https://github.com/ThiagoEvoa/treinamento_flutter/tree/hero
+
 ```
-- Animated Icon:
+- [Animated Icon](https://github.com/ThiagoEvoa/treinamento_flutter/tree/animated_icon):
 ```
-https://github.com/ThiagoEvoa/treinamento_flutter/tree/animated_icon
+
 ```
-- Dialog:
+- [Dialog](https://github.com/ThiagoEvoa/treinamento_flutter/tree/dialog):
 ```
-https://github.com/ThiagoEvoa/treinamento_flutter/tree/dialog
+
 ```
-- Draggable:
+- [Draggable](https://github.com/ThiagoEvoa/treinamento_flutter/tree/draggable):
 ```
-https://github.com/ThiagoEvoa/treinamento_flutter/tree/draggable
+
 ```
-- Gradient:
+- [Gradient](https://github.com/ThiagoEvoa/treinamento_flutter/tree/gradient):
 ```
-https://github.com/ThiagoEvoa/treinamento_flutter/tree/gradient
+
 ```
-- Webview:
+- [Webview](https://github.com/ThiagoEvoa/treinamento_flutter/tree/webview):
 ```
-https://github.com/ThiagoEvoa/treinamento_flutter/tree/webview
+
 ```
-- Animated Container:
+- [Animated Container](https://github.com/ThiagoEvoa/treinamento_flutter/tree/animated_container):
 ```
-https://github.com/ThiagoEvoa/treinamento_flutter/tree/animated_container
+
 ```
-- Dark Theme:
+- [Dark Theme](https://github.com/ThiagoEvoa/treinamento_flutter/tree/dark_theme):
 ```
-https://github.com/ThiagoEvoa/treinamento_flutter/tree/dark_theme
+
 ```
-- Internationalization:
+- [Internationalization](https://github.com/ThiagoEvoa/treinamento_flutter/tree/internationalization):
 ```
-https://github.com/ThiagoEvoa/treinamento_flutter/tree/internationalization
+
 ```
-- SharedPreferences:
+- [SharedPreferences](https://github.com/ThiagoEvoa/treinamento_flutter/tree/sharedpreferences):
 ```
-https://github.com/ThiagoEvoa/treinamento_flutter/tree/sharedpreferences
+
 ```
-- Database:
+- [Database](https://github.com/ThiagoEvoa/treinamento_flutter/tree/database):
 ```
-https://github.com/ThiagoEvoa/treinamento_flutter/tree/database
+
 ```
-- API Rest:
+- [API Rest](https://github.com/ThiagoEvoa/treinamento_flutter/tree/api_rest):
 ```
-https://github.com/ThiagoEvoa/treinamento_flutter/tree/api_rest
+
 ```
-- Geolocator:
+- [Geolocator](https://github.com/ThiagoEvoa/treinamento_flutter/tree/geolocator):
 ```
-https://github.com/ThiagoEvoa/treinamento_flutter/tree/geolocator
+
 ```
-- Google Maps:
+- [Google Maps](https://github.com/ThiagoEvoa/treinamento_flutter/tree/google_maps):
 ```
-https://github.com/ThiagoEvoa/treinamento_flutter/tree/google_maps
+
 ```
-- Bloc Pattern:
+- [Bloc Pattern](https://github.com/ThiagoEvoa/treinamento_flutter/tree/bloc_pattern):
 ```
-https://github.com/ThiagoEvoa/treinamento_flutter/tree/bloc_pattern
+
 ```
-- Bloc Pattern rxDart:
+- [Bloc Pattern rxDart](https://github.com/ThiagoEvoa/treinamento_flutter/tree/bloc_pattern_rxdart):
 ```
-https://github.com/ThiagoEvoa/treinamento_flutter/tree/bloc_pattern_rxdart
+
 ```
-- Provider:
+- [Provider](https://github.com/ThiagoEvoa/treinamento_flutter/tree/provider):
 ```
-https://github.com/ThiagoEvoa/treinamento_flutter/tree/provider
+
 ```
-- DarkTheme Provider:
+- [DarkTheme Provider](https://github.com/ThiagoEvoa/treinamento_flutter/tree/dark_theme_provider):
 ```
-https://github.com/ThiagoEvoa/treinamento_flutter/tree/dark_theme_provider
+
 ```
-- API Rest Bloc rxDart:
+- [API Rest Bloc rxDart](https://github.com/ThiagoEvoa/treinamento_flutter/tree/api_rest_bloc_rxdart):
 ```
-https://github.com/ThiagoEvoa/treinamento_flutter/tree/api_rest_bloc_rxdart
+
 ```
-- API Rest Provider:
+- [API Rest Provider](https://github.com/ThiagoEvoa/treinamento_flutter/tree/api_rest_provider):
 ```
-https://github.com/ThiagoEvoa/treinamento_flutter/tree/api_rest_provider
+
 ```
