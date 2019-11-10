@@ -6,7 +6,7 @@ Repositório com exemplos básicos, destinado a auxiliar o aprendizado de como i
 
 - Text:
 ```
-https://github.com/ThiagoEvoa/treinamento_flutter/tree/text
+Repositório com exemplo de texto simples. <a href="url">https://github.com/ThiagoEvoa/treinamento_flutter/tree/text</a>
 ```
 - RichText:
 ```
