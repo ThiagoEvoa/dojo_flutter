@@ -1,4 +1,4 @@
-# treinamento_flutter
+# Dojo Flutter
 
 Repositório com exemplos básicos, destinado a auxiliar o aprendizado de como implementar as coisas mais utilizadas no dia-a-dia com o Flutter.
 
