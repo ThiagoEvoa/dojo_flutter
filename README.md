@@ -4,11 +4,9 @@ Repositório com exemplos básicos, destinado a auxiliar o aprendizado de como i
 
 ## Branches
 
-- Text:
+- [Text](https://github.com/ThiagoEvoa/treinamento_flutter/tree/text):
 ```
 Repositório com exemplo de como criar um texto simples. 
-
-https://github.com/ThiagoEvoa/treinamento_flutter/tree/text
 ```
 - RichText:
 ```
