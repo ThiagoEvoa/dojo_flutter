@@ -27,7 +27,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _currentStep = 0;
   StepState _stepState = StepState.editing;
-
+  
   @override
   Widget build(BuildContext context) {
     return Material(
