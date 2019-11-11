@@ -30,11 +30,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Stepper(
+    return Material(
+      child: Stepper(
         currentStep: _currentStep,
         controlsBuilder: (BuildContext context,
             {VoidCallback onStepContinue, VoidCallback onStepCancel}) {
