@@ -78,9 +78,8 @@ class _MyHomePageState extends State<MyHomePage> {
       );
     }
 
-    return Scaffold(
-      appBar: AppBar(),
-      body: Center(
+    return Material(
+      child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
