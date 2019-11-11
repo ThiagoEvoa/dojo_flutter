@@ -69,6 +69,7 @@ Scaffold(
 );
 
 //SecondPage
+
 class SecondPage extends StatefulWidget {
   final String data;
 
