@@ -33,39 +33,47 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     Future _selectDate() async {
       DateTime dateTime = await showDatePicker(
-          context: context,
-          initialDate: DateTime.now(),
-          firstDate: DateTime(DateTime.now().year),
-          lastDate: DateTime(DateTime.now().year + 100),
-          builder: (context, child) {
-            return Theme(
-              data: ThemeData.light(),
-              child: child,
-            );
-          });
+        context: context,
+        initialDate: DateTime.now(),
+        firstDate: DateTime(DateTime.now().year),
+        lastDate: DateTime(DateTime.now().year + 100),
+        builder: (context, child) {
+          return Theme(
+            data: ThemeData.light(),
+            child: child,
+          );
+        },
+      );
 
       if (dateTime != null) {
-        setState(() {
-          _dateTimeController.text = formatDate(dateTime, [dd,"/",mm,"/",yyyy]);
-        });
+        setState(
+          () {
+            _dateTimeController.text =
+                formatDate(dateTime, [dd, "/", mm, "/", yyyy]);
+          },
+        );
       }
     }
 
     Future _selectTime() async {
       TimeOfDay timeOfDay = await showTimePicker(
-          context: context,
-          initialTime: TimeOfDay(hour: DateTime.now().hour, minute: DateTime.now().minute),
-          builder: (context, child) {
-            return Theme(
-              data: ThemeData.light(),
-              child: child,
-            );
-          });
+        context: context,
+        initialTime:
+            TimeOfDay(hour: DateTime.now().hour, minute: DateTime.now().minute),
+        builder: (context, child) {
+          return Theme(
+            data: ThemeData.light(),
+            child: child,
+          );
+        },
+      );
 
       if (timeOfDay != null) {
-        setState(() {
-          _timeOfDayController.text = timeOfDay.format(context);
-        });
+        setState(
+          () {
+            _timeOfDayController.text = timeOfDay.format(context);
+          },
+        );
       }
     }
 
@@ -87,7 +95,6 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
           ),
-
           Padding(
             padding: const EdgeInsets.all(8),
             child: TextField(
