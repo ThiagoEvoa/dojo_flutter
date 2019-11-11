@@ -20,7 +20,6 @@ class MyApp extends StatelessWidget {
 }
 
 class Home extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -30,10 +29,11 @@ class Home extends StatelessWidget {
           onTap: () {
             Navigator.of(context).push(
               PageRouteBuilder(
-                  pageBuilder: (context, animation, secondAnimation) {
-                    return Second();
-                  },
-                  transitionDuration: Duration(seconds: 1)),
+                pageBuilder: (context, animation, secondAnimation) {
+                  return Second();
+                },
+                transitionDuration: Duration(seconds: 1),
+              ),
             );
           },
           child: Padding(
