@@ -6,14 +6,10 @@ class SecondPage extends StatefulWidget {
   const SecondPage({this.data = ""});
 
   @override
-  _SecondPageState createState() => _SecondPageState(data);
+  _SecondPageState createState() => _SecondPageState();
 }
 
 class _SecondPageState extends State<SecondPage> {
-  final String data;
-
-  _SecondPageState(this.data);
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +20,7 @@ class _SecondPageState extends State<SecondPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(data),
+            Text(widget.data),
             RaisedButton(
               onPressed: (){
                 Navigator.pop(context);
