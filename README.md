@@ -6,6 +6,7 @@
 ```dart
 int _selectedItem = 0;
 List<Widget> pages = [Page1(), Page2()];
+
 Scaffold(
   appBar: AppBar(),
   body: Center(
