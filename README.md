@@ -1,9 +1,28 @@
 # Navigation
 <p align="center">
-<img src="https://docs.google.com/uc?id=1fDWdaHU9UmvL05_2ZbaTygZSM-KGrYHz" height="649" width="300">
+<img src="https://docs.google.com/uc?id=1JdP6n7zycqs-5nZBIt-Tt9Q_aqU8OXE-" height="649" width="300">
+<img src="https://docs.google.com/uc?id=1cJADNotGzJKQeomDzq9tb2iMVMjcpTrY" height="649" width="300">
 </p>
 
 ```dart
+//FirstPage
+
+_push(BuildContext context, Widget widget) {
+  Navigator.of(context).push(
+    MaterialPageRoute(
+      builder: (context) => widget,
+    ),
+  );
+}
+
+ _pushReplacement(BuildContext context, Widget widget) {
+  Navigator.of(context).pushReplacement(
+    MaterialPageRoute(
+      builder: (context) => widget,
+    ),
+  );
+}
+
 Scaffold(
   appBar: AppBar(
     title: Text(widget.title),
@@ -49,16 +68,38 @@ Scaffold(
   ),
 );
 
-Column(
-  mainAxisAlignment: MainAxisAlignment.center,
-  children: <Widget>[
-    Text(data),
-    RaisedButton(
-      onPressed: (){
-        Navigator.pop(context);
-      },
-      child: Text("Close"),
-    )
-  ],
-),
+//SecondPage
+class SecondPage extends StatefulWidget {
+  final String data;
+
+  const SecondPage({this.data = ""});
+
+  @override
+  _SecondPageState createState() => _SecondPageState();
+}
+
+class _SecondPageState extends State<SecondPage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Second Page"),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(widget.data),
+            RaisedButton(
+              onPressed: (){
+                Navigator.pop(context);
+              },
+              child: Text("Fechar"),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
 ```
