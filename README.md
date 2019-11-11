@@ -3,7 +3,7 @@
 <img src="https://docs.google.com/uc?id=15_urYiOwgfIbXwT1aq9zRRW50DfgWaNd" height="649" width="300">
 </p>
 
-```
+```dart
 SelectableText(
   text,
   onTap: () {
