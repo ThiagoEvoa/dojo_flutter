@@ -11,16 +11,17 @@ Scaffold(
   appBar: AppBar(),
   body: Center(
     child: Builder(
-        builder: (context) => RaisedButton(
-              onPressed: () {
-                Scaffold.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text("Snackbar"),
-                  ),
-                );
-              },
-              child: Text("Button"),
-            )),
+      builder: (context) => RaisedButton(
+        onPressed: () {
+          Scaffold.of(context).showSnackBar(
+            SnackBar(
+              content: Text("Snackbar"),
+            ),
+          );
+        },
+        child: Text("Button"),
+      ),
+    ),
   ),
   floatingActionButton: FloatingActionButton(
     onPressed: () {
