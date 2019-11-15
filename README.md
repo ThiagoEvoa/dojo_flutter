@@ -57,3 +57,4 @@ Nesse repositório contém exemplos de como implementar várias coisas no Flutte
 - [API Rest Provider](https://github.com/ThiagoEvoa/treinamento_flutter/tree/api_rest_provider):
 - [Biometric](https://github.com/ThiagoEvoa/dojo_flutter/tree/biometric):
 - [PackageInfo](https://github.com/ThiagoEvoa/dojo_flutter/tree/package_info):
+- [Firebase Auth](https://github.com/ThiagoEvoa/dojo_flutter/tree/firebase_auth):
