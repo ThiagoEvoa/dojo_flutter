@@ -55,3 +55,4 @@ Nesse repositório contém exemplos de como implementar várias coisas no Flutte
 - [DarkTheme Provider](https://github.com/ThiagoEvoa/treinamento_flutter/tree/dark_theme_provider):
 - [API Rest Bloc rxDart](https://github.com/ThiagoEvoa/treinamento_flutter/tree/api_rest_bloc_rxdart):
 - [API Rest Provider](https://github.com/ThiagoEvoa/treinamento_flutter/tree/api_rest_provider):
+- [Biometric](https://github.com/ThiagoEvoa/dojo_flutter/tree/biometric):
