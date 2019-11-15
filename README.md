@@ -48,6 +48,7 @@ Nesse repositório contém exemplos de como implementar várias coisas no Flutte
 - [API Rest](https://github.com/ThiagoEvoa/treinamento_flutter/tree/api_rest):
 - [Geolocator](https://github.com/ThiagoEvoa/treinamento_flutter/tree/geolocator):
 - [Google Maps](https://github.com/ThiagoEvoa/treinamento_flutter/tree/google_maps):
+- [SetState](https://github.com/ThiagoEvoa/dojo_flutter/tree/set_state):
 - [Bloc Pattern](https://github.com/ThiagoEvoa/treinamento_flutter/tree/bloc_pattern):
 - [Bloc Pattern rxDart](https://github.com/ThiagoEvoa/treinamento_flutter/tree/bloc_pattern_rxdart):
 - [Provider](https://github.com/ThiagoEvoa/treinamento_flutter/tree/provider):
