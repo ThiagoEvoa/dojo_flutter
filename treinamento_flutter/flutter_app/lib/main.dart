@@ -1,7 +1,10 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/firebase_store_helper.dart';
-import 'package:flutter_app/second_page.dart';
+import 'package:flutter_app/firebasd_store_helper.dart';
+import 'package:flutter_app/firebase_storage_helper.dart';
+import 'package:image_picker/image_picker.dart';
 
 void main() => runApp(MyApp());
 
@@ -28,22 +31,59 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  _openSecondPage({DocumentSnapshot document}) {
-    Navigator.of(context).push(MaterialPageRoute(
-        builder: (context) => SecondPage(document: document)));
+  final _key = GlobalKey<ScaffoldState>();
+
+  Future _getImageFromCamera() async {
+    var image = await ImagePicker.pickImage(source: ImageSource.camera);
+    _save(image);
+  }
+
+  Future _getImageFromGallery() async {
+    var image = await ImagePicker.pickImage(source: ImageSource.gallery);
+    _save(image);
+  }
+
+  _save(File image) {
+    if (image != null) {
+      FirebaseStorageHelper().upload(image: image).then((result) {
+        _showSnackBar('Yeah! We made it!');
+      }).catchError((error) {
+        _showSnackBar('Ops! something went wron!');
+      });
+    }
+  }
+
+  _delete(String name, String id) {
+    FirebaseStorageHelper().delete(name: name, id: id).then((result) {
+      _showSnackBar('Yeah! We made it!');
+    }).catchError((error) {
+      _showSnackBar('Ops! something went wron!');
+    });
+  }
+
+  _showSnackBar(String message) {
+    _key.currentState.showSnackBar(SnackBar(
+      content: Text(message),
+    ));
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      key: _key,
+      appBar: AppBar(
+        actions: <Widget>[
+          IconButton(
+            onPressed: _getImageFromCamera,
+            icon: Icon(Icons.camera),
+          )
+        ],
+      ),
       body: StreamBuilder<QuerySnapshot>(
         stream: FirebaseStoreHelper().retrieve(),
         builder: (context, snapshot) {
           if (snapshot.hasError) {
-            return Center(
-              child: Text(snapshot.error),
-            );
+            return Center(child: Text(snapshot.error));
           } else {
             switch (snapshot.connectionState) {
               case ConnectionState.waiting:
@@ -55,24 +95,16 @@ class _MyHomePageState extends State<MyHomePage> {
               default:
                 {
                   return ListView(
-                    children: snapshot.data.documents.map(
-                      (document) {
-                        return ListTile(
-                          onTap: () {
-                            _openSecondPage(document: document);
-                          },
-                          title: Text(
-                            document['email'],
-                          ),
-                          trailing: IconButton(
-                            onPressed: () {
-                              FirebaseStoreHelper().delete(document.documentID);
-                            },
-                            icon: Icon(Icons.delete),
-                          ),
-                        );
-                      },
-                    ).toList(),
+                    children: snapshot.data.documents.map((document) {
+                      return ListTile(
+                        onLongPress: () {
+                          _delete(document.data['name'], document.documentID);
+                        },
+                        title: Card(
+                          child: Image.network(document.data['url']),
+                        ),
+                      );
+                    }).toList(),
                   );
                 }
             }
@@ -80,10 +112,8 @@ class _MyHomePageState extends State<MyHomePage> {
         },
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          _openSecondPage();
-        },
-        child: Icon(Icons.add),
+        onPressed: _getImageFromGallery,
+        child: Icon(Icons.image),
       ),
     );
   }
