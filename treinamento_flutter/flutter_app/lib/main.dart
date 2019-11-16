@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_app/firebase_auth_service.dart';
 
 void main() => runApp(MyApp());
 
@@ -34,10 +35,9 @@ class _MyHomePageState extends State<MyHomePage> {
     final _emailController = TextEditingController();
     final _passwordController = TextEditingController();
 
-    Future<AuthResult> _log() async {
-      return await _auth
-          .signInWithEmailAndPassword(
-              email: _emailController.text, password: _passwordController.text)
+    _log() {
+      FirebaseAuthService()
+          .sign(email: _emailController.text, password: _emailController.text)
           .then((result) {
         setState(() {
           _result = 'Yeah, we made it!';
