@@ -1,6 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_app/firebase_auth_service.dart';
+import 'package:flutter_app/firebase_store_helper.dart';
+import 'package:flutter_app/second_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -27,52 +28,62 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  String _result = '';
+  _openSecondPage({DocumentSnapshot document}) {
+    Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) => SecondPage(document: document)));
+  }
 
   @override
   Widget build(BuildContext context) {
-    final _emailController = TextEditingController();
-    final _passwordController = TextEditingController();
-
-    _log() {
-      FirebaseAuthService()
-          .sign(email: _emailController.text, password: _emailController.text)
-          .then(
-        (result) {
-          setState(() {
-            _result = 'Yeah, we made it!';
-          });
+    return Scaffold(
+      appBar: AppBar(),
+      body: StreamBuilder<QuerySnapshot>(
+        stream: FirebaseStoreHelper().retrieve(),
+        builder: (context, snapshot) {
+          if (snapshot.hasError) {
+            return Center(
+              child: Text(snapshot.error),
+            );
+          } else {
+            switch (snapshot.connectionState) {
+              case ConnectionState.waiting:
+                {
+                  return Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
+              default:
+                {
+                  return ListView(
+                    children: snapshot.data.documents.map(
+                      (document) {
+                        return ListTile(
+                          onTap: () {
+                            _openSecondPage(document: document);
+                          },
+                          title: Text(
+                            document['email'],
+                          ),
+                          trailing: IconButton(
+                            onPressed: () {
+                              FirebaseStoreHelper().delete(document.documentID);
+                            },
+                            icon: Icon(Icons.delete),
+                          ),
+                        );
+                      },
+                    ).toList(),
+                  );
+                }
+            }
+          }
         },
-      ).catchError(
-        (error) {
-          setState(() {
-            _result = error.message;
-          });
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          _openSecondPage();
         },
-      );
-    }
-
-    return Material(
-      child: Padding(
-        padding: const EdgeInsets.all(10),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            TextField(
-              controller: _emailController,
-              decoration: InputDecoration(labelText: 'Email'),
-            ),
-            TextField(
-              controller: _passwordController,
-              decoration: InputDecoration(labelText: 'Password'),
-            ),
-            RaisedButton(
-              onPressed: _log,
-              child: Text('Sign'),
-            ),
-            Text(_result),
-          ],
-        ),
+        child: Icon(Icons.add),
       ),
     );
   }
