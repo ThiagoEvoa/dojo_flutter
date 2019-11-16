@@ -27,7 +27,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final _auth = FirebaseAuth.instance;
   String _result = '';
 
   @override
@@ -38,15 +37,19 @@ class _MyHomePageState extends State<MyHomePage> {
     _log() {
       FirebaseAuthService()
           .sign(email: _emailController.text, password: _emailController.text)
-          .then((result) {
-        setState(() {
-          _result = 'Yeah, we made it!';
-        });
-      }).catchError((error) {
-        setState(() {
-          _result = error.message;
-        });
-      });
+          .then(
+        (result) {
+          setState(() {
+            _result = 'Yeah, we made it!';
+          });
+        },
+      ).catchError(
+        (error) {
+          setState(() {
+            _result = error.message;
+          });
+        },
+      );
     }
 
     return Material(
