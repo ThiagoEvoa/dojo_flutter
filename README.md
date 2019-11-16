@@ -59,3 +59,4 @@ Nesse repositório contém exemplos de como implementar várias coisas no Flutte
 - [PackageInfo](https://github.com/ThiagoEvoa/dojo_flutter/tree/package_info):
 - [Firebase Auth](https://github.com/ThiagoEvoa/dojo_flutter/tree/firebase_auth):
 - [Firebase Database](https://github.com/ThiagoEvoa/dojo_flutter/tree/firebase_database):
+- [Firebase Storage](https://github.com/ThiagoEvoa/dojo_flutter/tree/firebase_storage):
