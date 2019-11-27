@@ -28,30 +28,29 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   String _result = '';
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+
+  _log() {
+    FirebaseAuthService()
+        .sign(email: _emailController.text, password: _passwordController.text)
+        .then(
+      (result) {
+        setState(() {
+          _result = 'Yeah, we made it!';
+        });
+      },
+    ).catchError(
+      (error) {
+        setState(() {
+          _result = error.message;
+        });
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
-    final _emailController = TextEditingController();
-    final _passwordController = TextEditingController();
-
-    _log() {
-      FirebaseAuthService()
-          .sign(email: _emailController.text, password: _emailController.text)
-          .then(
-        (result) {
-          setState(() {
-            _result = 'Yeah, we made it!';
-          });
-        },
-      ).catchError(
-        (error) {
-          setState(() {
-            _result = error.message;
-          });
-        },
-      );
-    }
-
     return Material(
       child: Padding(
         padding: const EdgeInsets.all(10),
