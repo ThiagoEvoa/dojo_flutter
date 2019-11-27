@@ -30,11 +30,12 @@ class _SecondPageState extends State<SecondPage> {
             ),
             RaisedButton(
               onPressed: () {
-                if (widget.document == null)
+                if (widget.document == null) {
                   FirebaseStoreHelper().save(_controller.text);
-                FirebaseStoreHelper()
-                    .update(widget.document.documentID, _controller.text);
-
+                } else {
+                  FirebaseStoreHelper()
+                      .update(widget.document.documentID, _controller.text);
+                }
                 Navigator.of(context).pop();
               },
               child: Text('Save'),
